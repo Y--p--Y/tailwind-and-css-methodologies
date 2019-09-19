@@ -45,20 +45,18 @@ https://github.com/stubbornella/oocss/wiki
 
 ---
 
-## Pros 😄
-
-* reduce css size
-* 🙅 How to name this class?
-
----
-
-## Cons 🤷
+> There’s no pretending that .stacked-form is any more ‘semantic’ than .align-right; they’re both named after how they affect the presentation of the markup, and we are using those classes in our markup to achieve a specific presentational result.
+> <p align="right">Adam Wathan, author of Tailwind CSS</p>
 
 ---
 
 # Utility First
 
+component + functional approach
+
 https://tailwindcss.com/docs/utility-first
+
+* pseudo-elements
 
 ---
 
@@ -90,10 +88,35 @@ https://tailwindcss.com/docs/responsive-design/
 
 ---
 
+```
+.btn {
+  @apply font-bold py-2 px-4 rounded;
+}
+```
+
+---
+
 ## Customization
 
 * extend tailwind theme
 * write a plugin https://tailwindcss.com/docs/plugins/#adding-utilities
+
+---
+
+## Pros 😄
+
+* Small css
+* More cache-friendly stylesheet
+* Productivity 🙅 How to name this class?
+
+---
+
+## Cons 🤷
+
+* Contextually aware rules. e.g. display-mode toggle
+* Theming
+* Responsive design: ❌ fixed breakpoints, ✅ component-specific breakpoints
+* CSS-grid
 
 ---
 
