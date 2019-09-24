@@ -122,11 +122,37 @@ https://tailwindcss.com/docs/responsive-design/
 
 ---
 
-```
+### extract common utility patterns to CSS component classes
+
+<Highlighter language='css'>
+{`
 .btn {
   @apply font-bold py-2 px-4 rounded;
 }
-```
+`}
+</Highlighter>
+
+---
+
+### Write a plugin
+
+<Highlighter language='js'>
+{`const buttons = {
+  '.btn': {
+    padding: '.5rem 1rem',
+    borderRadius: '.25rem',
+    fontWeight: '600',
+  },
+  '.btn-blue': {
+    backgroundColor: '#3490dc',
+    color: '#fff',
+    '&:hover': {
+      backgroundColor: '#2779bd'
+    },
+  },
+}
+addComponents(buttons)`}
+</Highlighter>
 
 ---
 
@@ -172,6 +198,10 @@ https://tailwindcss.com/docs/responsive-design/
 # primerCSS
 
 http://primercss.io
+
+* based on scss
+* animations
+* component styles
 
 ---
 
