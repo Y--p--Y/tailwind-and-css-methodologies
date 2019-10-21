@@ -1,7 +1,9 @@
 import { themes, Head, Notes } from 'mdx-deck'
+import Highlighter from 'react-syntax-highlighter'
+
 import example1 from './statics/example1.png'
 import responsive from './statics/responsive.jpeg'
-import Highlighter from 'react-syntax-highlighter'
+import responsiveChart from './statics/responsive-chart.png'
 
 export const theme = themes.lobster
 
@@ -18,15 +20,6 @@ export const theme = themes.lobster
 https://2019.stateofcss.com/technologies/methodologies/
 
 https://2019.stateofcss.com/technologies/css-frameworks/
-
----
-
-# CSS methodologies
-
-* Object Oriented CSS (OOCSS)
-* Block Element Modifier (BEM)
-* Atomic/Functional CSS
-* Utility-first CSS
 
 ---
 
@@ -53,6 +46,22 @@ https://2019.stateofcss.com/technologies/css-frameworks/
   </div>
 </div>`}
 </Highlighter>
+
+---
+
+![](http://assets.eli.wtf/talks/functional-css-concatenate-2018/81d2bffd2d12c8275ab2c708b3fd5297.gif)
+
+---
+
+![](http://assets.eli.wtf/talks/functional-css-concatenate-2018/c8560d1fdc3249eacae8fadcddf590be.gif)
+
+---
+
+> Two CSS properties walk into a bar.
+> 
+> A barstool in a completely different bar falls over.
+
+<https://twitter.com/thomasfuchs/status/493790680397803521>
 
 ---
 
@@ -87,14 +96,79 @@ https://2019.stateofcss.com/technologies/css-frameworks/
 
 ---
 
+## Pros 😄
+
+* Small css
+* More cache-friendly stylesheet
+* Productivity 🙅 How to name this class?
+
+---
+
+## Cons 🤷
+
+* Contextually aware rules. e.g. display-mode toggle
+* Theming
+* Responsive design: ❌ fixed breakpoints, ✅ component-specific breakpoints
+* CSS-grid
+
+---
+
+<img src={responsive} />
+
+---
+
+<img src={responsiveChart} />
+
+---
+
 # Utility First
 
 ---
 
 # Tailwind
 
+<https://tailwindcss.com/>
+
 * component + functional approach
-* design system
+* aligned to design system
+
+---
+
+```js
+// postcss.config.js
+
+module.exports = {
+  plugins: [
+    // ...
+    require('tailwindcss'),
+    require('autoprefixer'),
+    // ...
+  ]
+}
+```
+
+---
+
+```css
+/* app.css */
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+```
+
+---
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {},
+  variants: {},
+  plugins: [],
+}
+```
 
 ---
 
@@ -156,52 +230,71 @@ addComponents(buttons)`}
 
 ---
 
-## Customization
-
-* extend tailwind theme
-* write a plugin https://tailwindcss.com/docs/plugins/#adding-utilities
+## purgeCSS
 
 ---
 
-# purgeCSS
+# Build a responsive site with Tailwind and css custom properties!
 
 ---
 
-## Pros 😄
+## Responsive font size
 
-* Small css
-* More cache-friendly stylesheet
-* Productivity 🙅 How to name this class?
+```js
+// tailwind.config.js
 
----
-
-## Cons 🤷
-
-* Contextually aware rules. e.g. display-mode toggle
-* Theming
-* Responsive design: ❌ fixed breakpoints, ✅ component-specific breakpoints
-* CSS-grid
+fontSize: {
+  base: 'var(--text-base)',
+}
+```
 
 ---
 
-<img src={responsive} />
+```css
+// app.css
+
+:root {
+  --text-base: 14px;
+}
+@screen md {
+  :root {
+    --text-base: 16px;
+  }
+}
+
+```
 
 ---
 
-# 👀 others
+## Responsive size
 
-* tachyon
-* primer CSS
+```css
+.image-slide {
+  --image-height: 390px;
+  --image-width: 193px;
+
+  height: var(--image-height);
+  width: var(--image-width);
+}
+```
 
 ---
 
-# primerCSS
+```css
+@screen md {
+  .image-slide {
+    --image-height: calc(390px + (100vw - 768px)*(586 - 390)/(1188 - 768));
+    --image-width: calc(193px + (100vw - 768px)*(290 - 193)/(1188 - 768));
+  }
+}
 
-http://primercss.io
-
-* based on scss
-* animations
-* component styles
+@screen xl {
+  .image-slide {
+    --image-height: 586px;
+    --image-width: 290px;
+  }
+}
+```
 
 ---
 
@@ -212,7 +305,10 @@ http://primercss.io
 # Reference
 
 * https://www.browserlondon.com/blog/2019/06/10/functional-css-perils/
+* http://assets.eli.wtf/talks/functional-css-concatenate-2018
 
-## Check their code!
+---
 
-* https://send.firefox.com/ (built with tailwind)
+## Built with Tailwind
+
+* https://send.firefox.com/
