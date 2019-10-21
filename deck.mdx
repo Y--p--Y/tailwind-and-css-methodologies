@@ -59,6 +59,7 @@ The older your codebase is...
 * Never stop writing CSS.
 
 ---
+
 ![](http://assets.eli.wtf/talks/functional-css-concatenate-2018/81d2bffd2d12c8275ab2c708b3fd5297.gif)
 
 ---
@@ -72,6 +73,12 @@ The older your codebase is...
 > A barstool in a completely different bar falls over.
 
 <https://twitter.com/thomasfuchs/status/493790680397803521>
+
+---
+
+# Atomic CSS
+
+* use of single-purpose and ‘pure’ classes that consistently behave the same regardless of context 
 
 ---
 
@@ -95,12 +102,6 @@ The older your codebase is...
 
 ---
 
-# Atomic
-
-* use of single-purpose and ‘pure’ classes that consistently behave the same regardless of context 
-
----
-
 > There’s no pretending that .stacked-form is any more ‘semantic’ than .align-right; they’re both named after how they affect the presentation of the markup, and we are using those classes in our markup to achieve a specific presentational result.
 > <p align="right">Adam Wathan, author of Tailwind CSS</p>
 
@@ -110,11 +111,11 @@ The older your codebase is...
 
 * Small css
 
-<img src={compare} />
+<img style="height:80vh;max-width:80vw" src={compare} />
 
 ---
 
-* More cache-friendly stylesheet.
+* More cache-friendly stylesheet (ideal: Write UI without writing CSS)
 * Productivity 🙅 How to name this class?
 
 ---
@@ -131,6 +132,8 @@ The older your codebase is...
 <img src={responsive} />
 
 ---
+
+### 🤯
 
 <img src={responsiveChart} />
 
@@ -281,7 +284,7 @@ fontSize: {
 
 ---
 
-## Responsive size
+## Responsive width and height
 
 ```css
 .image-slide {
@@ -307,6 +310,28 @@ fontSize: {
   .image-slide {
     --image-height: 586px;
     --image-width: 290px;
+  }
+}
+```
+
+---
+
+## 🤔 Do you need flexiblejs?
+
+---
+
+```js
+const spacing = {
+  2: 8,
+  3: 12
+  // ...
+}
+
+module.exports = {
+  theme: {
+    extend: {
+      spacing: toVw(spacing)
+    }
   }
 }
 ```
