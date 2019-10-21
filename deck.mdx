@@ -1,9 +1,10 @@
-import { themes, Head, Notes } from 'mdx-deck'
+import { Split, themes, Head, Notes } from 'mdx-deck'
 import Highlighter from 'react-syntax-highlighter'
 
 import example1 from './statics/example1.png'
 import responsive from './statics/responsive.jpeg'
 import responsiveChart from './statics/responsive-chart.png'
+import compare from './statics/compare.png'
 
 export const theme = themes.lobster
 
@@ -49,6 +50,15 @@ https://2019.stateofcss.com/technologies/css-frameworks/
 
 ---
 
+The older your codebase is...
+
+* More levels of cascade.
+* Selectors get longer.
+* File size get bigger.
+* More complexity.
+* Never stop writing CSS.
+
+---
 ![](http://assets.eli.wtf/talks/functional-css-concatenate-2018/81d2bffd2d12c8275ab2c708b3fd5297.gif)
 
 ---
@@ -99,7 +109,12 @@ https://2019.stateofcss.com/technologies/css-frameworks/
 ## Pros 😄
 
 * Small css
-* More cache-friendly stylesheet
+
+<img src={compare} />
+
+---
+
+* More cache-friendly stylesheet.
 * Productivity 🙅 How to name this class?
 
 ---
@@ -306,6 +321,8 @@ fontSize: {
 
 * https://www.browserlondon.com/blog/2019/06/10/functional-css-perils/
 * http://assets.eli.wtf/talks/functional-css-concatenate-2018
+* http://johnpolacek.com/rethinking/
+* https://johnpolacek.github.io/the-case-for-atomic-css/
 
 ---
 
